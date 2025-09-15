@@ -1,0 +1,17 @@
+{
+  "name": "Auto Update Test Files",
+  "description": "Automatically update or create test files when service classes are modified",
+  "trigger": {
+    "type": "file_save",
+    "patterns": ["src/lib/*.ts", "src/services/*.ts"]
+  },
+  "actions": [
+    {
+      "type": "ai_task",
+      "prompt": "A service class has been modified at ${file_path}. Please:\n1. Check if a corresponding test file exists\n2. If it exists, update it to match any new methods or changes\n3. If it doesn't exist, create a comprehensive test file\n4. Ensure all public methods are tested\n5. Use Jest testing framework\n6. Follow the existing test patterns in the project",
+      "context_files": ["${file_path}", "**/*.test.ts", "**/*.spec.ts"],
+      "output_instruction": "Create or update the test file in the appropriate __tests__ directory"
+    }
+  ],
+  "enabled": true
+}

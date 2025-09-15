@@ -1,0 +1,17 @@
+{
+  "name": "Auto TypeScript Type Check",
+  "description": "Automatically run type checking when TypeScript files are saved",
+  "trigger": {
+    "type": "file_save",
+    "patterns": ["**/*.ts", "**/*.tsx"]
+  },
+  "actions": [
+    {
+      "type": "shell_command",
+      "command": "npm run type-check",
+      "working_directory": ".",
+      "show_output": true
+    }
+  ],
+  "enabled": true
+}

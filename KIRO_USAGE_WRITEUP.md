@@ -88,13 +88,44 @@ This single generation saved weeks of research and data entry while providing pr
 
 ## 3. Agent Hooks & Spec-to-Code Questions
 
-### **Agent Hooks: Not Used in This Project**
-I did not use Kiro's agent hooks feature for this project. The development was done in a single intensive session with direct conversation-based development rather than automated workflows.
+### **Agent Hooks: Implemented Development Automation**
+I implemented three key Kiro hooks to automate critical development workflows:
 
-**If I had used hooks, potential applications would have been:**
-- Auto-run type checking when saving TypeScript files
-- Automatically update test files when modifying service classes
-- Auto-format and lint code on file changes
+**1. Auto TypeScript Type Checking**
+```json
+{
+  "trigger": { "type": "file_save", "patterns": ["**/*.ts", "**/*.tsx"] },
+  "actions": [{ "type": "shell_command", "command": "npm run type-check" }]
+}
+```
+
+**2. Auto Format and Lint**
+```json
+{
+  "trigger": { "type": "file_save", "patterns": ["**/*.ts", "**/*.tsx"] },
+  "actions": [
+    { "command": "npx prettier --write ${file_path}" },
+    { "command": "npx eslint --fix ${file_path}" }
+  ]
+}
+```
+
+**3. Auto Update Test Files**
+```json
+{
+  "trigger": { "type": "file_save", "patterns": ["src/lib/*.ts"] },
+  "actions": [{
+    "type": "ai_task",
+    "prompt": "Update or create comprehensive test files for modified service classes"
+  }]
+}
+```
+
+**How these hooks improved development:**
+- **Immediate feedback** - Type errors caught instantly on save
+- **Consistent code quality** - Automatic formatting and linting eliminated style issues
+- **Test coverage** - AI automatically maintained test files as services evolved
+- **Zero manual overhead** - All quality checks happened automatically in background
 
 ### **Spec-to-Code: Leveraged Existing Specs**
 

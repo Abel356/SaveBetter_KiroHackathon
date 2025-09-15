@@ -1,0 +1,25 @@
+{
+  "name": "Auto Format and Lint",
+  "description": "Automatically format and lint code when files are saved",
+  "trigger": {
+    "type": "file_save",
+    "patterns": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"]
+  },
+  "actions": [
+    {
+      "type": "shell_command",
+      "command": "npx prettier --write",
+      "args": ["${file_path}"],
+      "working_directory": ".",
+      "show_output": false
+    },
+    {
+      "type": "shell_command",
+      "command": "npx eslint --fix",
+      "args": ["${file_path}"],
+      "working_directory": ".",
+      "show_output": true
+    }
+  ],
+  "enabled": true
+}
