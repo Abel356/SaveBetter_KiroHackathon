@@ -1,0 +1,18 @@
+{
+  "enabled": true,
+  "name": "Component Generator",
+  "description": "Automatically generates React components with proper TypeScript interfaces, following SaveBetter project conventions including proper imports, exports, and component structure",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "savebetter-dark/components/**/*.tsx",
+      "savebetter-mobile/src/components/**/*.tsx",
+      "savebetter-desktop/src/components/**/*.tsx"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A new React component file has been created or modified. Please generate or update the component following SaveBetter development guidelines: 1) Use functional components with TypeScript interfaces 2) Follow PascalCase naming for components 3) Include proper imports from shared types if needed 4) Use appropriate UI component patterns 5) Include proper exports 6) Follow the project's component architecture with hooks and proper state management 7) Ensure strict TypeScript compliance with no 'any' types. Generate a complete, production-ready component that fits the SaveBetter project structure."
+  }
+}

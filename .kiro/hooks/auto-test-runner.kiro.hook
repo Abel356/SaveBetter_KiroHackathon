@@ -1,0 +1,23 @@
+{
+  "enabled": true,
+  "name": "Auto-Test Runner",
+  "description": "Automatically runs tests when TypeScript source files are modified in any project to ensure code quality and catch regressions early",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "savebetter-backend/src/**/*.ts",
+      "savebetter-desktop/src/**/*.ts",
+      "savebetter-mobile/src/**/*.ts",
+      "savebetter-dark/app/**/*.ts",
+      "savebetter-dark/app/**/*.tsx",
+      "savebetter-dark/components/**/*.ts",
+      "savebetter-dark/components/**/*.tsx",
+      "shared/src/**/*.ts"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Source code has been modified. Run the appropriate tests for the changed files to ensure code quality and catch any regressions. Use `npm run test` to run all tests, or run project-specific tests if needed. Focus on the modified areas and related functionality."
+  }
+}
