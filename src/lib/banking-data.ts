@@ -494,7 +494,7 @@ export class BankingService {
    * Get unique institutions
    */
   getAllInstitutions(): string[] {
-    return [...new Set(canadianBankRates.map(bank => bank.institution))].sort()
+    return Array.from(new Set(canadianBankRates.map(bank => bank.institution))).sort()
   }
   
   /**
@@ -536,15 +536,15 @@ export class BankingService {
     let filtered = canadianBankRates
     
     if (criteria.accountType) {
-      filtered = filtered.filter(rate => rate.type === criteria.accountType)
+      filtered = filtered.filter(rate => rate.type === criteria.accountType!)
     }
     
-    if (criteria.minimumRate) {
-      filtered = filtered.filter(rate => rate.interestRate >= criteria.minimumRate)
+    if (criteria.minimumRate !== undefined) {
+      filtered = filtered.filter(rate => rate.interestRate >= criteria.minimumRate!)
     }
     
     if (criteria.maxMinimumDeposit !== undefined) {
-      filtered = filtered.filter(rate => rate.minimumDeposit <= criteria.maxMinimumDeposit)
+      filtered = filtered.filter(rate => rate.minimumDeposit <= criteria.maxMinimumDeposit!)
     }
     
     if (criteria.preferredFeatures) {
