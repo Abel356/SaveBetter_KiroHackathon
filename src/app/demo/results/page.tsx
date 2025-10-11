@@ -354,12 +354,18 @@ export default function ResultsPage() {
 
           {/* View All Options Button */}
           <div className="text-center">
-            <button 
-              onClick={() => router.push('/demo/banking')}
-              className="btn-secondary"
+            <a 
+              href="/demo/banking"
+              onClick={(e) => {
+                e.preventDefault();
+                console.log('Banking link clicked!');
+                window.location.href = '/demo/banking';
+              }}
+              className="btn-secondary cursor-pointer inline-block"
+              role="button"
             >
               View All {bankOptions.length} Banking Options
-            </button>
+            </a>
             <p className="text-sm text-gray-500 mt-2">
               Compare rates, features, and find the perfect fit for your needs
             </p>
@@ -506,12 +512,18 @@ export default function ResultsPage() {
 
           {/* View All Investments Button */}
           <div className="text-center mt-6">
-            <button 
-              onClick={() => router.push('/demo/investments')}
-              className="btn-secondary"
+            <a 
+              href="/demo/investments"
+              onClick={(e) => {
+                e.preventDefault();
+                console.log('Investments link clicked!');
+                window.location.href = '/demo/investments';
+              }}
+              className="btn-secondary cursor-pointer inline-block"
+              role="button"
             >
               Explore All Canadian Investments
-            </button>
+            </a>
             <p className="text-sm text-gray-500 mt-2">
               View 20+ stocks and 10+ ETFs with detailed analysis
             </p>
