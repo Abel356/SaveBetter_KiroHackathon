@@ -1,4 +1,4 @@
-# SaveBetter - Comprehensive Canadian Financial Planning Platform
+# SaveBetter - Comprehensive Canadian Financial Planning Platform (https://save-better-kiro-hackathon-6njl.vercel.app/)
 
 > **Beyond the 50/30/20 Rule** - Adaptive financial planning that actually fits your life
 
