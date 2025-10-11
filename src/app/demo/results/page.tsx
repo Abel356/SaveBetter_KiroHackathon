@@ -1,6 +1,6 @@
 'use client'
 
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams, useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { TrendingUp, DollarSign, Target, Lightbulb, ArrowRight, Brain } from 'lucide-react'
 import { AdaptiveSavingEngine } from '@/lib/adaptive-engine'
@@ -14,6 +14,7 @@ const adaptiveEngine = new AdaptiveSavingEngine()
 
 export default function ResultsPage() {
   const searchParams = useSearchParams()
+  const router = useRouter()
   const [recommendation, setRecommendation] = useState<SavingsRecommendation | null>(null)
   const [bankOptions, setBankOptions] = useState<BankRate[]>([])
   const [assessmentResult, setAssessmentResult] = useState<AssessmentResult | null>(null)
@@ -353,9 +354,12 @@ export default function ResultsPage() {
 
           {/* View All Options Button */}
           <div className="text-center">
-            <Link href="/demo/banking" className="btn-secondary">
+            <button 
+              onClick={() => router.push('/demo/banking')}
+              className="btn-secondary"
+            >
               View All {bankOptions.length} Banking Options
-            </Link>
+            </button>
             <p className="text-sm text-gray-500 mt-2">
               Compare rates, features, and find the perfect fit for your needs
             </p>
@@ -502,9 +506,12 @@ export default function ResultsPage() {
 
           {/* View All Investments Button */}
           <div className="text-center mt-6">
-            <Link href="/demo/investments" className="btn-secondary">
+            <button 
+              onClick={() => router.push('/demo/investments')}
+              className="btn-secondary"
+            >
               Explore All Canadian Investments
-            </Link>
+            </button>
             <p className="text-sm text-gray-500 mt-2">
               View 20+ stocks and 10+ ETFs with detailed analysis
             </p>
